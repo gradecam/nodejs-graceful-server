@@ -1,0 +1,44 @@
+{
+  "name": "graceful-server",
+  "version": "1.0.1",
+  "description": "Adds the ability to gracefully shutdown a server.",
+  "main": "dist/graceful-server.js",
+  "types": "dist/graceful-server.d.ts",
+  "files": [
+    "dist/"
+  ],
+  "scripts": {
+    "build": "tsc --project .",
+    "lint": "tslint --project tsconfig.json --type-check",
+    "test": "mocha",
+    "perf:baseline": "ts-node test/performance.ts & sleep 2 && artillery quick -d 10 -r 1000 -o /dev/null -k http://localhost:8000",
+    "perf:graceful": "ts-node test/performance.ts 1 & sleep 2 && artillery quick -d 10 -r 1000 -o /dev/null -k http://localhost:8000",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "graceful",
+    "shutdown",
+    "stoppable",
+    "server"
+  ],
+  "author": "Jarom Loveridge",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gradecam/nodejs-graceful-server.git"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.1.2",
+    "@types/get-port": "^3.2.0",
+    "@types/mocha": "^5.0.0",
+    "@types/node": "^6.0.104",
+    "artillery": "^1.6.0-15",
+    "chai": "^4.1.2",
+    "get-port": "^3.2.0",
+    "mocha": "^5.0.5",
+    "requisition": "~1.7.0",
+    "ts-node": "^5.0.1",
+    "tslib": "^1.9.0",
+    "typescript": "^2.8.1"
+  }
+}

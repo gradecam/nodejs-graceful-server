@@ -1,0 +1,11 @@
+._*
+*.css.map
+*.DS_Store
+*.gz
+*.swp
+*.swo
+.tscache
+dist/
+node_modules/
+npm-*
+.vscode
